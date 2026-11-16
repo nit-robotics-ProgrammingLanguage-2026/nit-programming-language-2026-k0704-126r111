@@ -1,3 +1,32 @@
+
 #include <stdio.h>
-int f(int x){static int s=0;s+=x;return s;}
-int main(void){int n,a=0;scanf("%d",&n);if(n<1||n>10){printf("NG");return 0;}for(int i=1;i<=n;i++){a=f(i*2);}printf("%d",a);return 0;}
+
+int addToRunningTotal(int newValue)
+{
+    static int accumulatedSum = 0;
+
+    accumulatedSum += newValue;
+    return accumulatedSum;
+}
+
+int main(void)
+{
+    int inputNumber;
+    int result = 0;
+
+    scanf("%d", &inputNumber);
+
+    if (inputNumber < 1 || inputNumber > 10)
+    {
+        printf("NG");
+        return 0;
+    }
+
+    for (int counter = 1; counter <= inputNumber; counter++)
+    {
+        result = addToRunningTotal(counter * 2);
+    }
+
+    printf("%d", result);
+    return 0;
+}
